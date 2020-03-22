@@ -6,7 +6,7 @@ const Container = styled.div`
   position: relative;
   text-align: center;
   width: 100%;
-  max-width: 350px;
+  max-width: 25vw;
   img {
     transition: 0.2s;
   }

@@ -55,17 +55,7 @@ const SocialContainer = () => {
           style={{ color: '#5851db' }}
         />
       </a>
-      <a
-        href="http://www.bit.ly/loyaltyspot;"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        <FontAwesomeIcon
-          icon={faSpotify}
-          size="4x"
-          style={{ color: '#1db954' }}
-        />
-      </a>
+
       <a
         href="http://www.bit.ly/loyaltyapple;"
         target="_blank"
@@ -75,6 +65,17 @@ const SocialContainer = () => {
           icon={faItunes}
           size="4x"
           style={{ color: '#7572FF' }}
+        />
+      </a>
+      <a
+        href="http://www.bit.ly/loyaltyspot;"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        <FontAwesomeIcon
+          icon={faSpotify}
+          size="4x"
+          style={{ color: '#1db954' }}
         />
       </a>
     </Container>

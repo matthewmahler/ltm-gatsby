@@ -62,6 +62,7 @@ const Container = styled.div`
     grid-template-columns: 1fr 2fr 1fr;
     grid-gap: 1rem;
     padding: 0 2rem;
+    margin-bottom: 2rem;
     .images {
       display: flex;
       flex-direction: column;
@@ -88,14 +89,16 @@ const Container = styled.div`
 
 const Story = props => {
   let [width, height] = useWindowSize();
-
+  function shuffle(array) {
+    return array.sort(() => Math.random() - 0.5);
+  }
   return (
     <StaticQuery
       query={query}
       render={data => {
         const portrait = data.contentfulStory.portraitBackground.fluid;
         const landscape = data.contentfulStory.landscapeBackground.fluid;
-        const images = data.contentfulStory.profileImages;
+        const images = shuffle(data.contentfulStory.profileImages);
         return (
           <BackgroundImage
             Tag="section"
@@ -110,14 +113,14 @@ const Story = props => {
                   <ProfileImage
                     fluid={images[0].fluid}
                     theme={props.theme}
-                    name="// James Conrad //"
-                    role="// Guitar //"
+                    name={images[0].title}
+                    role={images[0].description}
                   />
                   <ProfileImage
                     fluid={images[1].fluid}
                     theme={props.theme}
-                    name="// Ryan Keller //"
-                    role="// Bass // Vocals //"
+                    name={images[1].title}
+                    role={images[1].description}
                   />
                 </div>
 
@@ -132,22 +135,22 @@ const Story = props => {
                   <ProfileImage
                     fluid={images[2].fluid}
                     theme={props.theme}
-                    name="// Devin Mcguire //"
-                    role="// Guitar // Vocals //"
+                    name={images[2].title}
+                    role={images[2].description}
                   />
                 </div>
                 <div className="images">
                   <ProfileImage
                     fluid={images[3].fluid}
                     theme={props.theme}
-                    name="// Wil Patrick Jackson //"
-                    role="// Vocals //"
+                    name={images[3].title}
+                    role={images[3].description}
                   />
                   <ProfileImage
                     fluid={images[4].fluid}
                     theme={props.theme}
-                    name="// Kevin Castro //"
-                    role="// Drums //"
+                    name={images[4].title}
+                    role={images[4].description}
                   />
                 </div>
               </div>
@@ -190,6 +193,8 @@ const query = graphql`
         }
       }
       profileImages {
+        title
+        description
         fluid {
           aspectRatio
           base64
