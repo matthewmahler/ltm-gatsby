@@ -77,9 +77,9 @@ const MediaWrapper = props => {
     },
   });
   const breakpointColumnsObj = {
-    default: 3,
-    1200: 4,
-    991: 3,
+    default: 2,
+    1200: 2,
+    991: 2,
     768: 2,
   };
   return (
@@ -92,9 +92,9 @@ const MediaWrapper = props => {
         >
           {trail.map((animation, i) => {
             return fakeInstaData.data[i].media_type !== 'VIDEO' ? (
-              <img src={fakeInstaData.data[i].media_url} alt="" />
+              <img src={fakeInstaData.data[i].media_url} alt="" key={i} />
             ) : (
-              <video src={fakeInstaData.data[i].media_url} controls />
+              <video src={fakeInstaData.data[i].media_url} controls key={i} />
             );
           })}
         </Masonry>

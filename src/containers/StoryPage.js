@@ -4,6 +4,7 @@ import { StaticQuery, graphql } from 'gatsby';
 import BackgroundImage from 'gatsby-background-image';
 import Img from 'gatsby-image';
 import { useWindowSize } from '../hooks/useWindowResize';
+import ProfileImage from '../components/ProfileImage';
 
 const Container = styled.div`
   display: flex;
@@ -68,17 +69,19 @@ const Container = styled.div`
       align-items: center;
       justify-content: space-between;
     }
-    .story {
+    div {
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: space-between;
       width: 100%;
-      text-align: center;
-      p {
-        width: 100%;
-        font-size: 1.5rem;
-        color: #ccc;
+      .story {
+        text-align: center;
+        p {
+          width: 100%;
+          font-size: 1.5rem;
+          color: #ccc;
+        }
       }
     }
   }
@@ -86,7 +89,7 @@ const Container = styled.div`
 
 const Story = props => {
   let [width, height] = useWindowSize();
-  console.log(props);
+
   return (
     <StaticQuery
       query={query}
@@ -105,61 +108,47 @@ const Story = props => {
               <h1>{data.contentfulStory.header}</h1>
               <div className="band">
                 <div className="images">
-                  <Img
+                  <ProfileImage
                     fluid={images[0].fluid}
-                    backgroundColor={props.theme.pink}
-                    style={{
-                      width: '90%',
-                      borderRadius: '100rem',
-                      maxWidth: '350px',
-                    }}
+                    theme={props.theme}
+                    name="// James Conrad //"
+                    role="// Guitar //"
                   />
-                  <Img
+                  <ProfileImage
                     fluid={images[1].fluid}
-                    backgroundColor={props.theme.pink}
-                    style={{
-                      width: '90%',
-                      borderRadius: '100rem',
-                      maxWidth: '350px',
-                    }}
+                    theme={props.theme}
+                    name="// Ryan Keller //"
+                    role="// Bass // Vocals //"
                   />
                 </div>
 
-                <div className="story">
+                <div>
                   <div
+                    className="story"
                     dangerouslySetInnerHTML={{
                       __html: data.contentfulStory.bio.childMarkdownRemark.html,
                     }}
                   />
 
-                  <Img
+                  <ProfileImage
                     fluid={images[2].fluid}
-                    backgroundColor={props.theme.pink}
-                    style={{
-                      width: '90%',
-                      borderRadius: '100rem',
-                      maxWidth: '350px',
-                    }}
+                    theme={props.theme}
+                    name="// Devin Mcguire //"
+                    role="// Guitar // Vocals //"
                   />
                 </div>
                 <div className="images">
-                  <Img
+                  <ProfileImage
                     fluid={images[3].fluid}
-                    backgroundColor={props.theme.pink}
-                    style={{
-                      width: '90%',
-                      borderRadius: '100rem',
-                      maxWidth: '350px',
-                    }}
+                    theme={props.theme}
+                    name="// Wil Patrick Jackson //"
+                    role="// Vocals //"
                   />
-                  <Img
+                  <ProfileImage
                     fluid={images[4].fluid}
-                    backgroundColor={props.theme.pink}
-                    style={{
-                      width: '90%',
-                      borderRadius: '100rem',
-                      maxWidth: '350px',
-                    }}
+                    theme={props.theme}
+                    name="// Kevin Castro //"
+                    role="// Drums //"
                   />
                 </div>
               </div>

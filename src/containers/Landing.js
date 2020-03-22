@@ -33,7 +33,10 @@ const Container = styled.div`
       border-width: 5px;
       border-style: solid;
       border-image: linear-gradient(to right, #6780de, #c64274) 100 0% / 5px;
+      transition: 0.2s;
     }
+    transition: 0.2s;
+
     box-sizing: border-box;
     display: flex;
     flex-direction: row;

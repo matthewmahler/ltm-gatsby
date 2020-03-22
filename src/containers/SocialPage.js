@@ -2,7 +2,8 @@ import React from 'react';
 import styled from 'styled-components';
 import { StaticQuery, graphql } from 'gatsby';
 import BackgroundImage from 'gatsby-background-image';
-import Media from '../components/Media';
+import Instagram from '../components/Instagram';
+import Twitter from '../components/Twitter';
 
 const Container = styled.div`
   display: flex;
@@ -53,7 +54,6 @@ const Container = styled.div`
 `;
 
 const Story = props => {
-  console.log(props);
   return (
     <StaticQuery
       query={query}
@@ -71,10 +71,11 @@ const Story = props => {
               <div className="grid">
                 <div className="instagram">
                   <h2>{data.contentfulSocial.instagram}</h2>
-                  <Media theme={props.theme} />
+                  <Instagram theme={props.theme} />
                 </div>
                 <div className="twitter">
                   <h2>{data.contentfulSocial.twitter}</h2>
+                  <Twitter theme={props.theme} />
                 </div>
               </div>
             </Container>
