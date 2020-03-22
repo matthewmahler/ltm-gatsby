@@ -11,15 +11,17 @@ const Container = styled.div`
 `;
 const TwitterContainer = () => {
   useEffect(() => {
-    window.twttr.widgets.createTimeline(
-      {
-        sourceType: 'profile',
-        screenName: 'loyaltytome_',
-      },
-      document.getElementById('twitterContainer'),
-      { count: 10 }
-    );
-  }, [window.twttr]);
+    if (window !== undefined) {
+      window.twttr.widgets.createTimeline(
+        {
+          sourceType: 'profile',
+          screenName: 'loyaltytome_',
+        },
+        document.getElementById('twitterContainer'),
+        { count: 10 }
+      );
+    }
+  }, []);
   return <Container id="twitterContainer"></Container>;
 };
 
