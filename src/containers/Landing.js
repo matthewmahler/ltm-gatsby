@@ -21,7 +21,8 @@ const Container = styled.div`
   background-repeat: no-repeat;
   img {
     margin: 2rem;
-    width: 80%;
+    max-width: 80%;
+    max-height: 30vh;
     box-sizing: border-box;
   }
   button {
@@ -44,7 +45,7 @@ const Container = styled.div`
     justify-content: center;
     background-color: transparent;
     padding: 2rem;
-    font-size: 2rem;
+    font-size: 1.5rem;
     font-weight: 600;
     cursor: pointer;
     color: #ccc;

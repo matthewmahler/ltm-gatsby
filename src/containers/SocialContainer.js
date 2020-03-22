@@ -6,17 +6,18 @@ import {
   faSpotify,
   faTwitter,
   faFacebook,
+  faItunes,
 } from '@fortawesome/free-brands-svg-icons';
 
 const Container = styled.div`
   width: 30%;
+  height: 8vh;
   box-sizing: border-box;
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
   text-align: center;
-  margin: 2rem;
 `;
 const SocialContainer = () => {
   return (
@@ -47,6 +48,13 @@ const SocialContainer = () => {
           icon={faSpotify}
           size="4x"
           style={{ color: '#1db954' }}
+        />
+      </a>
+      <a href="" target="_blank" rel="noopener noreferrer">
+        <FontAwesomeIcon
+          icon={faItunes}
+          size="4x"
+          style={{ color: '#7572FF' }}
         />
       </a>
     </Container>
