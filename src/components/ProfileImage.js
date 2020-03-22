@@ -68,6 +68,9 @@ const ProfileImage = ({ fluid, theme, name, role }) => {
           borderRadius: '100rem',
           maxWidth: '350px',
         }}
+        imgStyle={{
+          maxWidth: '315px',
+        }}
       />
       <p
         className="overlay"

@@ -11,7 +11,7 @@ const Container = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
-  height: 85vh;
+  min-height: 85vh;
   background-image: linear-gradient(to bottom, #040404, #04040499, #040404);
   background-size: cover;
   background-repeat: no-repeat;
@@ -19,8 +19,7 @@ const Container = styled.div`
     font-size: 8rem;
     margin: 0 auto;
     font-weight: 400;
-    padding: 3rem;
-    padding-top: 0;
+    padding: 0;
 
     font-family: 'Mr Dafoe';
     font-size: rem;
@@ -60,7 +59,7 @@ const Container = styled.div`
     width: 100%;
     min-height: 65vh;
     display: grid;
-    grid-template-columns: 1fr 2.5fr 1fr;
+    grid-template-columns: 1fr 2fr 1fr;
     grid-gap: 1rem;
     padding: 0 2rem;
     .images {

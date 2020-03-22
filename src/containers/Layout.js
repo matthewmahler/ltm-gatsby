@@ -2,6 +2,8 @@ import React from 'react';
 import Nav from '../components/Nav';
 import styled, { createGlobalStyle } from 'styled-components';
 import SocialContainer from './SocialContainer';
+import Helmet from 'react-helmet';
+
 const GlobalStyle = createGlobalStyle`
 html{
   font-family: "Montserrat", sans-serif; 
@@ -46,12 +48,35 @@ const theme = {
 
 const Layout = props => {
   return (
-    <Container>
-      <GlobalStyle />
-      <Nav />
-      {React.cloneElement(props.children, { theme: theme })}
-      <SocialContainer />
-    </Container>
+    <>
+      <Helmet>
+        <script>
+          {`window.twttr = (function(d, s, id) {
+            var js,
+              fjs = d.getElementsByTagName(s)[0],
+              t = window.twttr || {};
+            if (d.getElementById(id)) return t;
+            js = d.createElement(s);
+            js.id = id;
+            js.src = 'https://platform.twitter.com/widgets.js';
+            fjs.parentNode.insertBefore(js, fjs);
+
+            t._e = [];
+            t.ready = function(f) {
+              t._e.push(f);
+            };
+
+            return t;
+          })(document, 'script', 'twitter-wjs')`}
+        </script>
+      </Helmet>
+      <Container>
+        <GlobalStyle />
+        <Nav />
+        {React.cloneElement(props.children, { theme: theme })}
+        <SocialContainer />
+      </Container>
+    </>
   );
 };
 
