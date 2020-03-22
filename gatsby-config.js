@@ -53,5 +53,11 @@ module.exports = {
         display: 'swap',
       },
     },
+    {
+      resolve: 'gatsby-plugin-load-script',
+      options: {
+        src: 'https://platform.twitter.com/widgets.js',
+      },
+    },
   ],
 };
