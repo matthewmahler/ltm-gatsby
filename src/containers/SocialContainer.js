@@ -11,46 +11,66 @@ import {
 
 const Container = styled.div`
   width: 30%;
-  height: 8vh;
+  height: 10vh;
   box-sizing: border-box;
   display: flex;
   flex-direction: row;
-  align-items: center;
+  align-items: flex-start;
   justify-content: space-between;
   text-align: center;
 `;
 const SocialContainer = () => {
   return (
     <Container>
-      <a href="" target="_blank" rel="noopener noreferrer">
+      <a
+        href="http://www.bit.ly/loyaltybook"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
         <FontAwesomeIcon
           icon={faFacebook}
           size="4x"
           style={{ color: '#4078c0' }}
         />
       </a>
-      <a href="" target="_blank" rel="noopener noreferrer">
+      <a
+        href="http://www.bit.ly/loyaltytweets"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
         <FontAwesomeIcon
           icon={faTwitter}
           size="4x"
           style={{ color: '#0077b5' }}
         />
       </a>
-      <a href="" target="_blank" rel="noopener noreferrer">
+      <a
+        href="http://www.bit.ly/loyaltygram"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
         <FontAwesomeIcon
           icon={faInstagram}
           size="4x"
           style={{ color: '#5851db' }}
         />
       </a>
-      <a href="" target="_blank" rel="noopener noreferrer">
+      <a
+        href="http://www.bit.ly/loyaltyspot;"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
         <FontAwesomeIcon
           icon={faSpotify}
           size="4x"
           style={{ color: '#1db954' }}
         />
       </a>
-      <a href="" target="_blank" rel="noopener noreferrer">
+      <a
+        href="http://www.bit.ly/loyaltyapple;"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
         <FontAwesomeIcon
           icon={faItunes}
           size="4x"
@@ -60,5 +80,4 @@ const SocialContainer = () => {
     </Container>
   );
 };
-
 export default SocialContainer;

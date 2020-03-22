@@ -14,7 +14,7 @@ const Container = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  min-height: 85vh;
+  min-height: 83vh;
   width: 100vw;
   background-image: linear-gradient(to bottom, #040404, #04040499, #040404);
   background-size: cover;
