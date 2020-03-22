@@ -50,8 +50,8 @@ const Layout = props => {
   return (
     <>
       <Helmet>
-        <script>{`if (typeof window !== 'undefined') {
-    window.twttr = (function(d, s, id) {
+        {typeof window !== `undefined` ? (
+          <script>{`window.twttr = (function(d, s, id) {
       var js,
         fjs = d.getElementsByTagName(s)[0],
         t = window.twttr || {};
@@ -67,8 +67,10 @@ const Layout = props => {
       };
 
       return t;
-    })(document, 'script', 'twitter-wjs');
-  }`}</script>
+    })(document, 'script', 'twitter-wjs');`}</script>
+        ) : (
+          ''
+        )}
       </Helmet>
       <Container>
         <GlobalStyle />
