@@ -49,7 +49,7 @@ module.exports = {
     {
       resolve: `gatsby-plugin-google-fonts`,
       options: {
-        fonts: [`Trirong`, `Montserrat`],
+        fonts: [`Lobster`, `Mr Dafoe`],
         display: 'swap',
       },
     },

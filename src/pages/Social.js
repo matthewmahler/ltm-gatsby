@@ -1,10 +1,10 @@
 import React from 'react';
-import Landing from '../containers/Landing';
+import SocialPage from '../containers/SocialPage';
 import Layout from '../containers/Layout';
 
 const HomePage = () => (
   <Layout>
-    <Landing />
+    <SocialPage />
   </Layout>
 );
 
