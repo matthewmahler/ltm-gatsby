@@ -27,22 +27,39 @@ const Container = styled.div`
     color: #929da6;
     .info {
       position: absolute;
-      top: ${props => (props.height / 2) * -1 - 40}px;
-      color: #6780de;
+      top: ${props => (props.height / 2) * -1 - 60}px;
+      color: #c64274;
 
-      :hover {
-        transition: 0.2s;
-        cursor: pointer;
-        color: #c64274;
-      }
       .name,
       .price {
+        font-family: 'bodoni-urw';
+
+        text-align: center;
         color: inherit;
         text-decoration: none;
         display: block;
-        font-size: 2em;
+        font-size: 3em;
         padding: 0.2em;
         margin: 0;
+        span {
+          font-size: 1.5rem;
+        }
+      }
+    }
+  }
+  @media only screen and (max-width: 420px) {
+    div {
+      .info {
+        top: ${props => (props.height / 2) * -1 - 30}px;
+
+        .name,
+        .price {
+          font-size: 1rem;
+
+          span {
+            font-size: 1rem;
+          }
+        }
       }
     }
   }
@@ -66,45 +83,45 @@ const Products = ({ name, image, price, url }) => {
     }
   }, []);
   return (
-    <Container
-      onClick={() => set(state => !state)}
-      height={height}
-      width={width}
-    >
-      <animated.div
-        ref={measuredRef}
-        className="front"
-        style={{
-          opacity,
-          transform: transform.interpolate(t => `${t} rotateX(180deg)`),
-        }}
+    <div>
+      <Container
+        onClick={() => set(state => !state)}
+        height={height}
+        width={width}
       >
-        <img alt={name} src={image} />
-      </animated.div>
-      <animated.div
-        className="back"
-        style={{ opacity: opacity.interpolate(o => 1 - o), transform, display }}
-      >
-        <div className="info">
-          <a
-            className="name"
-            href={url}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            {name}
-          </a>
-          <a
-            className="price"
-            href={url}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            {price}
-          </a>
-        </div>
-      </animated.div>
-    </Container>
+        <animated.div
+          ref={measuredRef}
+          className="front"
+          style={{
+            opacity,
+            transform: transform.interpolate(t => `${t} rotateX(180deg)`),
+          }}
+        >
+          <img alt={name} src={image} />
+        </animated.div>
+        <animated.div
+          className="back"
+          style={{
+            opacity: opacity.interpolate(o => 1 - o),
+            transform,
+            display,
+          }}
+        >
+          <div className="info">
+            <a
+              className="price"
+              href={url}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              {price}
+              <br />
+              <span>Click to Purchase</span>
+            </a>
+          </div>
+        </animated.div>
+      </Container>
+    </div>
   );
 };
 

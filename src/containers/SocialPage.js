@@ -10,7 +10,7 @@ const Container = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
-  min-height: 85vh;
+  max-height: 85vh;
   width: 100vw;
   background-image: linear-gradient(to bottom, #040404, #04040499, #040404);
   background-size: cover;
@@ -28,13 +28,10 @@ const Container = styled.div`
     background-clip: text;
     -webkit-text-fill-color: transparent;
   }
-  h2 {
-    font-family: 'bodoni-urw';
-    font-style: italic;
-    font-weight: 400;
-  }
+
   .grid {
     width: 100%;
+    overflow: scroll;
     display: grid;
     grid-template-columns: 2fr 1fr;
     .instagram,
@@ -45,14 +42,46 @@ const Container = styled.div`
       align-items: center;
       justify-content: flex-start;
       h2 {
+        font-family: 'bodoni-urw';
+        font-style: italic;
+        font-weight: 400;
         font-size: 2rem;
         padding: 1rem;
 
-        font-size: rem;
         background: -webkit-linear-gradient(45deg, #6780de, #c64274);
         -webkit-background-clip: text;
         background-clip: text;
         -webkit-text-fill-color: transparent;
+      }
+    }
+  }
+  @media only screen and (max-width: 420px) {
+    min-height: 87vh;
+
+    h1 {
+      font-size: 4rem;
+      padding: 0 2rem;
+      margin: 0 auto;
+    }
+    .grid {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      .instagram,
+      .twitter {
+        width: 95%;
+
+        h2 {
+          background: none;
+          -webkit-background-clip: inherit;
+          background-clip: inherit;
+          -webkit-text-fill-color: inherit;
+          color: #eee;
+          font-size: 2rem;
+          padding: 0;
+          margin: 0 auto;
+        }
       }
     }
   }

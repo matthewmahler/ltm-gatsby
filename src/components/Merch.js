@@ -12,6 +12,21 @@ const Container = styled.div`
   align-items: center;
   justify-content: flex-start;
   width: 90%;
+  div {
+    color: #eee;
+    :hover {
+      transition: 0.2s;
+      color: #c64274;
+    }
+    h2 {
+      text-align: center;
+      font-size: 2em;
+      font-family: 'bodoni-urw';
+      font-style: italic;
+      font-weight: 400;
+    }
+  }
+
   .masonryContainer {
     width: 100%;
   }
@@ -43,7 +58,6 @@ const Container = styled.div`
     display: grid;
     grid-template-columns: 1fr;
     grid-gap: 0px;
-    padding: 20px;
     .my-masonry-grid {
       margin-left: -15px; /* gutter size offset */
     }
@@ -55,6 +69,13 @@ const Container = styled.div`
     }
     .masonryContainer {
       width: 100%;
+    }
+  }
+  @media only screen and (max-width: 420px) {
+    div {
+      h2 {
+        font-size: 1em;
+      }
     }
   }
 `;
@@ -72,24 +93,33 @@ const Merch = () => {
         className="my-masonry-grid"
         columnClassName="my-masonry-grid_column"
       >
-        <Products
-          name="Product 1"
-          url="http://www.google.com"
-          image={img1}
-          price="$10"
-        />
-        <Products
-          name="Product 1"
-          url="http://www.google.com"
-          image={img2}
-          price="$10"
-        />
-        <Products
-          name="Product 1"
-          url="http://www.google.com"
-          image={img3}
-          price="$10"
-        />
+        <div>
+          <Products
+            name="Product 1"
+            url="http://www.google.com"
+            image={img1}
+            price="$10"
+          />
+          <h2>Product 1</h2>
+        </div>
+        <div>
+          <Products
+            name="Product 1"
+            url="http://www.google.com"
+            image={img2}
+            price="$10"
+          />
+          <h2>Product 2</h2>
+        </div>
+        <div>
+          <Products
+            name="Product 1"
+            url="http://www.google.com"
+            image={img3}
+            price="$10"
+          />
+          <h2>Product 3</h2>
+        </div>
       </Masonry>
     </Container>
   );

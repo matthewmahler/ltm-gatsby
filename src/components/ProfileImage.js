@@ -6,7 +6,7 @@ const Container = styled.div`
   position: relative;
   text-align: center;
   width: 100%;
-  max-width: 25vw;
+  max-width: 20vw;
 
   img {
     transition: 0.2s;
@@ -26,7 +26,7 @@ const Container = styled.div`
   }
   @media (max-width: 768px) {
     .overlay {
-      font-size: 0.7em;
+      display: none;
     }
   }
   @media (max-width: 450px) {
@@ -34,11 +34,13 @@ const Container = styled.div`
     img {
       border-radius: 5px;
     }
+
     img:hover {
       transition: 0.2s;
       border-radius: 15px;
     }
     .overlay {
+      display: none;
       font-size: 0.5em;
       padding: 0 auto;
     }

@@ -14,7 +14,7 @@ const Container = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  min-height: 83vh;
+  min-height: 85vh;
   width: 100vw;
   background-image: linear-gradient(to bottom, #040404, #04040499, #040404);
   background-size: cover;
@@ -53,6 +53,14 @@ const Container = styled.div`
     border: none;
     border-top: 5px solid #ccc;
     border-bottom: 5px solid #ccc;
+  }
+  @media only screen and (max-width: 420px) {
+    height: 87vh;
+
+    button {
+      padding: 1rem;
+      font-size: 1rem;
+    }
   }
 `;
 const Landing = ({ theme }) => {

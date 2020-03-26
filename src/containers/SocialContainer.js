@@ -10,14 +10,25 @@ import {
 } from '@fortawesome/free-brands-svg-icons';
 
 const Container = styled.div`
-  width: 30%;
+  width: 100%;
   height: 10vh;
   box-sizing: border-box;
   display: flex;
   flex-direction: row;
-  align-items: flex-start;
-  justify-content: space-between;
+  align-items: center;
+  justify-content: center;
   text-align: center;
+  a {
+    margin: 0 1rem;
+  }
+  @media only screen and (max-width: 420px) {
+    width: 90%;
+    height: 5vh;
+    a {
+      margin: 0;
+      transform: scale(0.5);
+    }
+  }
 `;
 const SocialContainer = () => {
   return (

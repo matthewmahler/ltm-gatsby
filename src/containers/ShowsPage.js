@@ -11,7 +11,7 @@ const Container = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
-  height: calc(85vh - 2rem);
+  height: 85vh;
   width: 100vw;
   background-image: linear-gradient(to bottom, #040404, #04040499, #040404);
   background-size: cover;
@@ -33,50 +33,90 @@ const Container = styled.div`
   }
   .showlist {
     width: 80vw;
-    max-height: 50vh;
+    height: 50vh;
     overflow: scroll;
-    display: grid;
-    grid-template-columns: 1fr 3fr 1fr;
-    grid-gap: 1rem;
+
     color: ${props => props.theme.white};
     font-family: 'bodoni-urw';
     font-weight: 500;
     font-size: 2rem;
     text-transform: uppercase;
-    .location {
-      font-size: 3rem;
-      background: -webkit-linear-gradient(45deg, #6780de, #c64274);
-      -webkit-background-clip: text;
-      background-clip: text;
-      -webkit-text-fill-color: transparent;
-    }
-    button {
-      transition: 0.2s;
-      box-sizing: border-box;
-      display: flex;
-      flex-direction: row;
-      align-items: center;
-      justify-content: center;
-      background-color: transparent;
-      font-size: 1.2rem;
-      padding: 1rem;
-      font-weight: 600;
-      height: 70%;
-      width: 80%;
-      cursor: pointer;
-      color: #ccc;
-      border: none;
-      border-top: 5px solid #ccc;
-      border-bottom: 5px solid #ccc;
-      :hover {
+    .show {
+      display: grid;
+      grid-template-columns: 1fr 3fr 1fr;
+      grid-gap: 1rem;
+      margin-bottom: 2rem;
+      .location {
+        font-size: 3rem;
         background: -webkit-linear-gradient(45deg, #6780de, #c64274);
         -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
         background-clip: text;
-        border-width: 5px;
-        border-style: solid;
-        border-image: linear-gradient(to right, #6780de, #c64274) 100 0% / 5px;
+        -webkit-text-fill-color: transparent;
+      }
+      button {
         transition: 0.2s;
+        box-sizing: border-box;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        background-color: transparent;
+        font-size: 1.2rem;
+        padding: 1rem;
+        font-weight: 600;
+        height: 70%;
+        width: 80%;
+        cursor: pointer;
+        color: #ccc;
+        border: none;
+        border-top: 5px solid #ccc;
+        border-bottom: 5px solid #ccc;
+        :hover {
+          background: -webkit-linear-gradient(45deg, #6780de, #c64274);
+          -webkit-background-clip: text;
+          -webkit-text-fill-color: transparent;
+          background-clip: text;
+          border-width: 5px;
+          border-style: solid;
+          border-image: linear-gradient(to right, #6780de, #c64274) 100 0% / 5px;
+          transition: 0.2s;
+        }
+      }
+    }
+  }
+  @media only screen and (max-width: 420px) {
+    min-height: 87vh;
+    h1 {
+      font-size: 4rem;
+      padding: 0 2rem;
+      margin: 0 auto;
+    }
+    .showlist {
+      width: 95%;
+      height: 90vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      font-size: 1rem;
+      text-align: center;
+      .show {
+        box-sizing: border-box;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-start;
+        border: 2px solid #ccc;
+        margin-bottom: 1rem;
+        .location {
+          font-size: 1.5rem;
+        }
+        button {
+          font-size: 1rem;
+          padding: 0.5rem;
+          border: none;
+        }
       }
     }
   }
@@ -106,7 +146,7 @@ const ShowsContainer = ({ theme }) => {
               <div className="showlist">
                 {filteredEvents.reverse().map((show, i) => {
                   return (
-                    <>
+                    <div className="show">
                       <span> {moment(show.start_time).format('MMM D')}</span>
                       <span>
                         {show.place ? show.place.name : 'TBA'}
@@ -122,8 +162,30 @@ const ShowsContainer = ({ theme }) => {
                           <span className="location">TBA</span>
                         )}
                       </span>
-                      <button>Tickets</button>
-                    </>
+                      <button>Get Tickets</button>
+                    </div>
+                  );
+                })}
+                {filteredEvents.reverse().map((show, i) => {
+                  return (
+                    <div className="show">
+                      <span> {moment(show.start_time).format('MMM D')}</span>
+                      <span>
+                        {show.place ? show.place.name : 'TBA'}
+                        <br />
+                        {show.place && show.place.location ? (
+                          <span className="location">
+                            {show.place.location.city},{' '}
+                            {show.place.location.state
+                              ? show.place.location.state
+                              : show.place.location.country}
+                          </span>
+                        ) : (
+                          <span className="location">TBA</span>
+                        )}
+                      </span>
+                      <button>Get Tickets</button>
+                    </div>
                   );
                 })}
               </div>

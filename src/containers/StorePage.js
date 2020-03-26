@@ -30,6 +30,15 @@ const Container = styled.div`
     /* text-shadow: 0px 2px 4px #79468c99, 0px 8px 13px #79468c11,
       10px 18px 23px #79468c11; */
   }
+  @media only screen and (max-width: 420px) {
+    min-height: 87vh;
+
+    h1 {
+      font-size: 4rem;
+      padding: 0 2rem;
+      margin: 0 auto;
+    }
+  }
 `;
 const StorePage = ({ theme }) => {
   let [width, height] = useWindowSize();
