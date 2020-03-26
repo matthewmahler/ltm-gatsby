@@ -10,6 +10,7 @@ const Container = styled.div`
   align-items: center;
   justify-content: flex-start;
   height: 85vh;
+  overflow: scroll;
   width: 100vw;
   background-image: linear-gradient(to bottom, #040404, #04040499, #040404);
   background-size: cover;
@@ -18,7 +19,7 @@ const Container = styled.div`
     font-size: 8rem;
     margin: 0 auto;
     font-weight: 400;
-    padding: 3rem;
+    padding: 0 2rem;
     padding-top: 0;
 
     font-family: 'Mr Dafoe';
