@@ -2,7 +2,6 @@ import React from 'react';
 import styled from 'styled-components';
 import { StaticQuery, graphql } from 'gatsby';
 import BackgroundImage from 'gatsby-background-image';
-import Img from 'gatsby-image';
 import { useWindowSize } from '../hooks/useWindowResize';
 import ProfileImage from '../components/ProfileImage';
 
@@ -22,7 +21,6 @@ const Container = styled.div`
     padding: 0;
 
     font-family: 'Mr Dafoe';
-    font-size: rem;
     background: -webkit-linear-gradient(45deg, #6780de, #c64274);
     -webkit-background-clip: text;
     background-clip: text;
@@ -56,12 +54,13 @@ const Container = styled.div`
     border-bottom: 5px solid #ccc;
   }
   .band {
+    font-family: 'Merriweather Sans';
+    font-weight: 400;
     width: 100%;
     min-height: 65vh;
     display: grid;
     grid-template-columns: 1fr 2fr 1fr;
     grid-gap: 1rem;
-    padding: 0 2rem;
     margin-bottom: 2rem;
     .images {
       display: flex;
@@ -79,7 +78,7 @@ const Container = styled.div`
         text-align: center;
         p {
           width: 100%;
-          font-size: 1.5rem;
+          font-size: 1.2rem;
           color: #ccc;
         }
       }
@@ -96,9 +95,9 @@ const Story = props => {
     <StaticQuery
       query={query}
       render={data => {
-        const portrait = data.contentfulStory.portraitBackground.fluid;
-        const landscape = data.contentfulStory.landscapeBackground.fluid;
-        const images = shuffle(data.contentfulStory.profileImages);
+        const portrait = data.contentfulStoryPage.portraitBackground.fluid;
+        const landscape = data.contentfulStoryPage.landscapeBackground.fluid;
+        const images = shuffle(data.contentfulStoryPage.profileImages);
         return (
           <BackgroundImage
             Tag="section"
@@ -107,7 +106,7 @@ const Story = props => {
             fadeIn={true}
           >
             <Container>
-              <h1>{data.contentfulStory.header}</h1>
+              <h1>{data.contentfulStoryPage.header}</h1>
               <div className="band">
                 <div className="images">
                   <ProfileImage
@@ -128,7 +127,8 @@ const Story = props => {
                   <div
                     className="story"
                     dangerouslySetInnerHTML={{
-                      __html: data.contentfulStory.bio.childMarkdownRemark.html,
+                      __html:
+                        data.contentfulStoryPage.bio.childMarkdownRemark.html,
                     }}
                   />
 
@@ -166,7 +166,7 @@ export default Story;
 
 const query = graphql`
   query StoryQuery {
-    contentfulStory {
+    contentfulStoryPage {
       header
       landscapeBackground {
         fluid {

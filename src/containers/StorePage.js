@@ -2,15 +2,14 @@ import React from 'react';
 import styled from 'styled-components';
 import { StaticQuery, graphql } from 'gatsby';
 import BackgroundImage from 'gatsby-background-image';
-import Instagram from '../components/Instagram';
-import Twitter from '../components/Twitter';
-
+import { useWindowSize } from '../hooks/useWindowResize';
+import Merch from '../components/Merch';
 const Container = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
-  min-height: 85vh;
+  height: 85vh;
   width: 100vw;
   background-image: linear-gradient(to bottom, #040404, #04040499, #040404);
   background-size: cover;
@@ -21,68 +20,36 @@ const Container = styled.div`
     font-weight: 400;
     padding: 3rem;
     padding-top: 0;
+
     font-family: 'Mr Dafoe';
     font-size: rem;
     background: -webkit-linear-gradient(45deg, #6780de, #c64274);
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
-  }
-  h2 {
-    font-family: 'bodoni-urw';
-    font-style: italic;
-    font-weight: 400;
-  }
-  .grid {
-    width: 100%;
-    display: grid;
-    grid-template-columns: 2fr 1fr;
-    .instagram,
-    .twitter {
-      width: 100%;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: flex-start;
-      h2 {
-        font-size: 2rem;
-        padding: 1rem;
-
-        font-size: rem;
-        background: -webkit-linear-gradient(45deg, #6780de, #c64274);
-        -webkit-background-clip: text;
-        background-clip: text;
-        -webkit-text-fill-color: transparent;
-      }
-    }
+    /* text-shadow: 0px 2px 4px #79468c99, 0px 8px 13px #79468c11,
+      10px 18px 23px #79468c11; */
   }
 `;
+const StorePage = ({ theme }) => {
+  let [width, height] = useWindowSize();
 
-const Story = props => {
   return (
     <StaticQuery
       query={query}
       render={data => {
-        const portrait = data.contentfulSocialPage.portraitBackground.fluid;
+        const portrait = data.contentfulStorePage.portraitBackground.fluid;
+        const landscape = data.contentfulStorePage.landscapeBackground.fluid;
         return (
           <BackgroundImage
             Tag="section"
-            fluid={portrait}
-            backgroundColor={props.theme.pink}
+            fluid={height > width ? portrait : landscape}
+            backgroundColor={theme.pink}
             fadeIn={true}
           >
             <Container>
-              <h1>{data.contentfulSocialPage.header}</h1>
-              <div className="grid">
-                <div className="instagram">
-                  <h2>{data.contentfulSocialPage.instagram}</h2>
-                  <Instagram theme={props.theme} />
-                </div>
-                <div className="twitter">
-                  <h2>{data.contentfulSocialPage.twitter}</h2>
-                  <Twitter theme={props.theme} />
-                </div>
-              </div>
+              <h1>Store</h1>
+              <Merch />
             </Container>
           </BackgroundImage>
         );
@@ -91,14 +58,12 @@ const Story = props => {
   );
 };
 
-export default Story;
+export default StorePage;
 
 const query = graphql`
-  query SocialQuery {
-    contentfulSocialPage {
+  query StoreQuery {
+    contentfulStorePage {
       header
-      twitter
-      instagram
       landscapeBackground {
         fluid {
           aspectRatio

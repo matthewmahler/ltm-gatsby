@@ -7,6 +7,7 @@ const Container = styled.div`
   text-align: center;
   width: 100%;
   max-width: 25vw;
+
   img {
     transition: 0.2s;
   }
@@ -69,7 +70,7 @@ const ProfileImage = ({ fluid, theme, name, role }) => {
           maxWidth: '350px',
         }}
         imgStyle={{
-          maxWidth: '315px',
+          width: '100%',
         }}
       />
       <p

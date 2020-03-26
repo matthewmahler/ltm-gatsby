@@ -26,6 +26,7 @@ const Container = styled.div`
     box-sizing: border-box;
   }
   button {
+    font-family: 'bodoni-urw';
     :hover {
       background: -webkit-linear-gradient(45deg, #6780de, #c64274);
       -webkit-background-clip: text;
@@ -46,7 +47,7 @@ const Container = styled.div`
     background-color: transparent;
     padding: 2rem;
     font-size: 1.5rem;
-    font-weight: 600;
+    font-weight: 500;
     cursor: pointer;
     color: #ccc;
     border: none;
@@ -67,8 +68,8 @@ const Landing = ({ theme }) => {
     <StaticQuery
       query={query}
       render={data => {
-        const portrait = data.contentfulLanding.portraitBackground.fluid;
-        const landscape = data.contentfulLanding.landscapeBackground.fluid;
+        const portrait = data.contentfulLandingPage.portraitBackground.fluid;
+        const landscape = data.contentfulLandingPage.landscapeBackground.fluid;
         return (
           <BackgroundImage
             Tag="section"
@@ -78,20 +79,22 @@ const Landing = ({ theme }) => {
           >
             <Container theme={theme} bg={img}>
               <animated.img
-                src={data.contentfulLanding.logo.file.url}
+                src={data.contentfulLandingPage.logo.file.url}
                 style={fade}
               />
               <button
-                onClick={() => window.open(data.contentfulLanding.buttonLink)}
+                onClick={() =>
+                  window.open(data.contentfulLandingPage.buttonLink)
+                }
               >
                 <span>
-                  {data.contentfulLanding.buttonLink.includes('youtube')
+                  {data.contentfulLandingPage.buttonLink.includes('youtube')
                     ? 'Watch Now on Youtube'
                     : 'Listen Now On Spotify'}
                 </span>
                 <FontAwesomeIcon
                   icon={
-                    data.contentfulLanding.buttonLink.includes('youtube')
+                    data.contentfulLandingPage.buttonLink.includes('youtube')
                       ? faYoutube
                       : faSpotify
                   }
@@ -111,7 +114,7 @@ export default Landing;
 
 const query = graphql`
   query LandingQuery {
-    contentfulLanding {
+    contentfulLandingPage {
       buttonLink
       logo {
         file {

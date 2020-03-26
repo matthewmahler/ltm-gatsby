@@ -16,6 +16,9 @@ const Container = styled.header`
   justify-self: flex-start;
   height: 7vh;
   background-color: #040404;
+  font-family: 'bodoni-urw';
+  font-style: italic;
+  font-weight: 400;
 
   nav {
     display: flex;
@@ -47,7 +50,7 @@ const Container = styled.header`
 
       li {
         font-size: 1.5rem;
-        margin-right: 0.5rem;
+        padding: 0 0.5rem;
         display: inline;
         :hover {
           background: -webkit-linear-gradient(45deg, #6780de, #c64274);
