@@ -1,10 +1,10 @@
 import React from 'react';
-import { fakeFaceBookData as shows } from '../mock/mockFacebookEvents';
 import moment from 'moment';
 import styled from 'styled-components';
 import { StaticQuery, graphql } from 'gatsby';
 import BackgroundImage from 'gatsby-background-image';
 import { useWindowSize } from '../hooks/useWindowResize';
+import { useFetch } from '../hooks/useFetch';
 
 const Container = styled.div`
   display: flex;
@@ -31,6 +31,9 @@ const Container = styled.div`
     /* text-shadow: 0px 2px 4px #79468c99, 0px 8px 13px #79468c11,
       10px 18px 23px #79468c11; */
   }
+  h2 {
+    text-align: center;
+  }
   .showlist {
     width: 80vw;
     height: 50vh;
@@ -53,7 +56,8 @@ const Container = styled.div`
         background-clip: text;
         -webkit-text-fill-color: transparent;
       }
-      button {
+      a {
+        text-decoration: none;
         transition: 0.2s;
         box-sizing: border-box;
         display: flex;
@@ -113,7 +117,7 @@ const Container = styled.div`
         .location {
           font-size: 1.5rem;
         }
-        button {
+        a {
           font-size: 1rem;
           padding: 0.5rem;
           border: none;
@@ -123,10 +127,12 @@ const Container = styled.div`
   }
 `;
 const ShowsContainer = ({ theme }) => {
-  console.log(shows);
-  const filteredEvents = shows.events.data.filter(event => {
-    return moment() < moment(event.start_time);
-  });
+  const [
+    shows,
+    loading,
+  ] = useFetch(`https://api.songkick.com/api/3.0/artists/9608559-loyalty-to-me/gigography.json?apikey=${process.env.GATSBY_SONGKICK_API_KEY}
+`);
+
   let [width, height] = useWindowSize();
 
   return (
@@ -145,50 +151,33 @@ const ShowsContainer = ({ theme }) => {
             <Container theme={theme}>
               <h1>Shows</h1>
               <div className="showlist">
-                {filteredEvents.reverse().map((show, i) => {
-                  return (
-                    <div className="show">
-                      <span> {moment(show.start_time).format('MMM D')}</span>
-                      <span>
-                        {show.place ? show.place.name : 'TBA'}
-                        <br />
-                        {show.place && show.place.location ? (
-                          <span className="location">
-                            {show.place.location.city},{' '}
-                            {show.place.location.state
-                              ? show.place.location.state
-                              : show.place.location.country}
-                          </span>
-                        ) : (
-                          <span className="location">TBA</span>
-                        )}
-                      </span>
-                      <button>Get Tickets</button>
-                    </div>
-                  );
-                })}
-                {filteredEvents.reverse().map((show, i) => {
-                  return (
-                    <div className="show">
-                      <span> {moment(show.start_time).format('MMM D')}</span>
-                      <span>
-                        {show.place ? show.place.name : 'TBA'}
-                        <br />
-                        {show.place && show.place.location ? (
-                          <span className="location">
-                            {show.place.location.city},{' '}
-                            {show.place.location.state
-                              ? show.place.location.state
-                              : show.place.location.country}
-                          </span>
-                        ) : (
-                          <span className="location">TBA</span>
-                        )}
-                      </span>
-                      <button>Get Tickets</button>
-                    </div>
-                  );
-                })}
+                {loading ? (
+                  <h2>Loading</h2>
+                ) : shows.resultsPage.totalEntries < 1 ? (
+                  <h2>More Shows TBA</h2>
+                ) : (
+                  shows.resultsPage.results.event.map((show, i) => {
+                    return (
+                      <div className="show">
+                        <span> {moment(show.start.date).format('MMM D')}</span>
+                        <span>
+                          {show.venue ? show.venue.displayName : 'TBA'}
+                          <br />
+                          {show.location ? (
+                            <span className="location">
+                              {show.location.city.replace(', US', '')}
+                            </span>
+                          ) : (
+                            <span className="location">TBA</span>
+                          )}
+                        </span>
+                        <a href={show.uri} target="_blank">
+                          Get Tickets
+                        </a>
+                      </div>
+                    );
+                  })
+                )}
               </div>
             </Container>
           </BackgroundImage>
