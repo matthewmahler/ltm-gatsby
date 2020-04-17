@@ -1,8 +1,7 @@
 import React from 'react';
-import { useTrail } from 'react-spring';
 import Masonry from 'react-masonry-css';
 import styled from 'styled-components';
-import { fakeInstaData } from '../mock/mockInstagram';
+import { useFetch } from '../hooks/useFetch';
 
 const Container = styled.div`
   display: flex;
@@ -65,17 +64,10 @@ const Container = styled.div`
   }
 `;
 
-const MediaWrapper = props => {
-  const trail = useTrail(fakeInstaData.data.length, {
-    marginLeft: 0,
-    opacity: 1,
-    transform: 'translate3d(0,0px,0)',
-    from: {
-      marginRight: -200,
-      opacity: 0,
-      transform: 'translate3d(0,-20px,0)',
-    },
-  });
+const MediaWrapper = (props) => {
+  const [gallery, galleryLoading] = useFetch(
+    `https://graph.facebook.com/v6.0/17841406484907284/media?fields=permalink%2Clike_count%2Ccaption%2Cmedia_type%2Cmedia_url&access_token=${process.env.GATSBY_FACEBOOK_ACCESS_TOKEN}`
+  );
   const breakpointColumnsObj = {
     default: 2,
     1200: 2,
@@ -90,13 +82,21 @@ const MediaWrapper = props => {
           className="my-masonry-grid"
           columnClassName="my-masonry-grid_column"
         >
-          {trail.map((animation, i) => {
-            return fakeInstaData.data[i].media_type !== 'VIDEO' ? (
-              <img src={fakeInstaData.data[i].media_url} alt="" key={i} />
-            ) : (
-              <video src={fakeInstaData.data[i].media_url} controls key={i} />
-            );
-          })}
+          {!galleryLoading ? (
+            gallery.data.map((image, i) => {
+              return image.media_type !== 'VIDEO' ? (
+                <a href={image.permalink} target="_blank" key={i}>
+                  <img src={image.media_url} alt="" />
+                </a>
+              ) : (
+                <a href={image.permalink} target="_blank" key={i}>
+                  <video src={image.media_url} controls />
+                </a>
+              );
+            })
+          ) : (
+            <p>...Loading...</p>
+          )}
         </Masonry>
       </div>
     </Container>

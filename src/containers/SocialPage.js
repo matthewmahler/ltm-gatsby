@@ -87,11 +87,11 @@ const Container = styled.div`
   }
 `;
 
-const Story = props => {
+const Story = (props) => {
   return (
     <StaticQuery
       query={query}
-      render={data => {
+      render={(data) => {
         const portrait = data.contentfulSocialPage.portraitBackground.fluid;
         return (
           <BackgroundImage

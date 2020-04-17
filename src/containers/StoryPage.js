@@ -118,7 +118,7 @@ const Container = styled.div`
   }
 `;
 
-const Story = props => {
+const Story = (props) => {
   let [width, height] = useWindowSize();
   function shuffle(array) {
     return array.sort(() => Math.random() - 0.5);
@@ -126,7 +126,7 @@ const Story = props => {
   return (
     <StaticQuery
       query={query}
-      render={data => {
+      render={(data) => {
         const portrait = data.contentfulStoryPage.portraitBackground.fluid;
         const landscape = data.contentfulStoryPage.landscapeBackground.fluid;
         const images = shuffle(data.contentfulStoryPage.profileImages);
