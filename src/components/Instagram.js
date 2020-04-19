@@ -8,7 +8,6 @@ const Container = styled.div`
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
-  min-height: 90vh;
   .mediaWrapper {
     width: 80%;
     min-height: 80%;

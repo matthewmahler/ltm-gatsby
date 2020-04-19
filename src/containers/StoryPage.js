@@ -18,7 +18,7 @@ const Container = styled.div`
     font-size: 8rem;
     margin: 0 auto;
     font-weight: 400;
-    padding: 0;
+    padding: 0 3rem;
 
     font-family: 'Mr Dafoe';
     background: -webkit-linear-gradient(45deg, #6780de, #c64274);
@@ -35,8 +35,6 @@ const Container = styled.div`
     font-family: 'Merriweather Sans';
     font-weight: 400;
     width: 100%;
-    min-height: 60vh;
-    max-height: 85vh;
 
     overflow: scroll;
     display: grid;

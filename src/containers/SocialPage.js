@@ -10,7 +10,7 @@ const Container = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
-  max-height: 85vh;
+  height: 85vh;
   width: 100vw;
   background-image: linear-gradient(to bottom, #040404, #04040499, #040404);
   background-size: cover;
@@ -19,8 +19,7 @@ const Container = styled.div`
     font-size: 8rem;
     margin: 0 auto;
     font-weight: 400;
-    padding: 3rem;
-    padding-top: 0;
+    padding: 0 3rem;
     font-family: 'Mr Dafoe';
     font-size: rem;
     background: -webkit-linear-gradient(45deg, #6780de, #c64274);
@@ -31,28 +30,30 @@ const Container = styled.div`
 
   .grid {
     width: 100%;
-    overflow: scroll;
     display: grid;
     grid-template-columns: 2fr 1fr;
+    h2 {
+      font-family: 'bodoni-urw';
+      font-style: italic;
+      font-weight: 400;
+      font-size: 2rem;
+      padding: 1rem;
+      text-align: center;
+      background: -webkit-linear-gradient(45deg, #6780de, #c64274);
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin: 0 auto;
+    }
     .instagram,
     .twitter {
       width: 100%;
+      overflow-y: scroll;
+      height: 50vh;
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: flex-start;
-      h2 {
-        font-family: 'bodoni-urw';
-        font-style: italic;
-        font-weight: 400;
-        font-size: 2rem;
-        padding: 1rem;
-
-        background: -webkit-linear-gradient(45deg, #6780de, #c64274);
-        -webkit-background-clip: text;
-        background-clip: text;
-        -webkit-text-fill-color: transparent;
-      }
     }
   }
   @media only screen and (max-width: 420px) {
@@ -103,12 +104,12 @@ const Story = (props) => {
             <Container>
               <h1>{data.contentfulSocialPage.header}</h1>
               <div className="grid">
+                <h2>{data.contentfulSocialPage.instagram}</h2>
+                <h2>{data.contentfulSocialPage.twitter}</h2>
                 <div className="instagram">
-                  <h2>{data.contentfulSocialPage.instagram}</h2>
                   <Instagram theme={props.theme} />
                 </div>
                 <div className="twitter">
-                  <h2>{data.contentfulSocialPage.twitter}</h2>
                   <Twitter theme={props.theme} />
                 </div>
               </div>

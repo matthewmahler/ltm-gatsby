@@ -13,7 +13,7 @@ html{
 
   body {
     margin:0;
-  
+    scrollbar-color: transparent transparent;
 }
 
 
@@ -25,8 +25,7 @@ html{
     }
   }
   ::-webkit-scrollbar {
-    width: 0px; 
-    background: transparent; 
+   display: none;
   }
 `;
 const Container = styled.main`
@@ -47,7 +46,7 @@ const theme = {
   purple: '#79468C',
 };
 
-const Layout = props => {
+const Layout = (props) => {
   return (
     <>
       <link rel="stylesheet" href="https://use.typekit.net/rgr1mqw.css" />
