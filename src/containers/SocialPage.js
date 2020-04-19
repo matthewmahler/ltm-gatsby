@@ -54,6 +54,9 @@ const Container = styled.div`
       flex-direction: column;
       align-items: center;
       justify-content: flex-start;
+      .mobileHide {
+        display: none;
+      }
     }
   }
   @media only screen and (max-width: 420px) {
@@ -69,18 +72,27 @@ const Container = styled.div`
       flex-direction: column;
       align-items: center;
       justify-content: flex-start;
+      height: 87vh;
+      overflow-y: scroll;
+      h2 {
+        display: none;
+      }
       .instagram,
       .twitter {
         width: 95%;
-
-        h2 {
-          background: none;
-          -webkit-background-clip: inherit;
-          background-clip: inherit;
-          -webkit-text-fill-color: inherit;
-          color: #eee;
+        min-height: 40vh;
+        .mobileHide {
+          display: block;
+          font-family: 'bodoni-urw';
+          font-style: italic;
+          font-weight: 400;
           font-size: 2rem;
-          padding: 0;
+          padding: 0.5rem;
+          text-align: center;
+          background: -webkit-linear-gradient(45deg, #6780de, #c64274);
+          -webkit-background-clip: text;
+          background-clip: text;
+          -webkit-text-fill-color: transparent;
           margin: 0 auto;
         }
       }
@@ -107,9 +119,17 @@ const Story = (props) => {
                 <h2>{data.contentfulSocialPage.instagram}</h2>
                 <h2>{data.contentfulSocialPage.twitter}</h2>
                 <div className="instagram">
+                  <h2 className="mobileHide">
+                    {data.contentfulSocialPage.instagram}
+                  </h2>
+
                   <Instagram theme={props.theme} />
                 </div>
                 <div className="twitter">
+                  <h2 className="mobileHide">
+                    {data.contentfulSocialPage.twitter}
+                  </h2>
+
                   <Twitter theme={props.theme} />
                 </div>
               </div>

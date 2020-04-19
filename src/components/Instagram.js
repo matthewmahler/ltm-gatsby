@@ -68,9 +68,9 @@ const MediaWrapper = (props) => {
     `https://graph.facebook.com/v6.0/17841406484907284/media?fields=permalink%2Clike_count%2Ccaption%2Cmedia_type%2Cmedia_url&access_token=${process.env.GATSBY_FACEBOOK_ACCESS_TOKEN}`
   );
   const breakpointColumnsObj = {
-    default: 2,
-    1200: 2,
-    991: 2,
+    default: 3,
+    1200: 3,
+    991: 3,
     768: 2,
   };
   return (
