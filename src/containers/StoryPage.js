@@ -120,6 +120,16 @@ const Container = styled.div`
           width: 90%;
           font-size: 1rem;
           color: #ccc;
+          a {
+            background: -webkit-linear-gradient(45deg, #6780de, #c64274);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-decoration: none;
+            :hover {
+              filter: brightness(1.5);
+            }
+          }
         }
       }
     }
