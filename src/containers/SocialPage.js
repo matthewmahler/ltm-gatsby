@@ -81,6 +81,7 @@ const Container = styled.div`
       .twitter {
         width: 95%;
         min-height: 40vh;
+        margin-bottom: 1rem;
         .mobileHide {
           display: block;
           font-family: 'bodoni-urw';

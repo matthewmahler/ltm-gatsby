@@ -13,10 +13,10 @@ const Container = styled.div`
   }
 
   .overlay {
-    background-color: ${props => props.theme.black};
-    color: ${props => props.theme.white}ff;
+    background-color: ${(props) => props.theme.black};
+    color: ${(props) => props.theme.white}ff;
     position: absolute;
-    width: calc(${props => props.imageWidth}px * 0.7);
+    width: 70%;
     top: 45%;
     left: 50%;
     transform: translate(-50%, -50%);

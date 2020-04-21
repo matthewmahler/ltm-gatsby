@@ -6,8 +6,6 @@ const Container = styled.div`
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
-  height: auto;
-  overflow-y: scroll;
   width: 90%;
 `;
 const TwitterContainer = () => {
