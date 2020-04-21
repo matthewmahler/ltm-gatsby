@@ -19,6 +19,7 @@ const Container = styled.div`
     margin: 0 auto;
     font-weight: 400;
     padding: 0 3rem;
+
     font-family: 'Mr Dafoe';
     background: -webkit-linear-gradient(45deg, #6780de, #c64274);
     -webkit-background-clip: text;
@@ -146,7 +147,7 @@ const Story = (props) => {
       render={(data) => {
         const portrait = data.contentfulStoryPage.portraitBackground.fluid;
         const landscape = data.contentfulStoryPage.landscapeBackground.fluid;
-        const images = data.contentfulStoryPage.profileImages;
+        const images = shuffle(data.contentfulStoryPage.profileImages);
         return (
           <BackgroundImage
             Tag="section"

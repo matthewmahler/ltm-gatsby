@@ -27,9 +27,6 @@ const Container = styled.div`
       /* change div to reference your elements you put in <Masonry> */
       background: grey;
     }
-    @media all and (max-width: 1200px) {
-      grid-template-columns: 1fr;
-    }
 
     img,
     video {
