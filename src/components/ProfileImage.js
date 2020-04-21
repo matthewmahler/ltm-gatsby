@@ -1,6 +1,5 @@
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
-import Img from 'gatsby-image';
 
 const Container = styled.div`
   position: relative;
@@ -49,30 +48,19 @@ const Container = styled.div`
 
 const ProfileImage = ({ fluid, theme, name, role }) => {
   const [hovered, setHovered] = useState(false);
-  const [imageWidth, setImageWidth] = useState(null);
-  const imageRef = useRef(null);
-  useEffect(() => {
-    setImageWidth(imageRef.current.imageRef.current.clientWidth);
-  }, [imageRef]);
 
   return (
     <Container
       onMouseOver={() => setHovered(true)}
       onMouseOut={() => setHovered(false)}
       theme={theme}
-      imageWidth={imageWidth}
     >
-      <Img
-        ref={imageRef}
-        fluid={fluid}
-        backgroundColor={theme.pink}
+      <img
+        src={fluid.src}
         style={{
           width: '90%',
           borderRadius: '100rem',
           maxWidth: '350px',
-        }}
-        imgStyle={{
-          width: '100%',
         }}
       />
       <p
