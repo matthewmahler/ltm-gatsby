@@ -1,9 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
 import Products from './Products';
-import img1 from '../images/product1.jpg';
-import img2 from '../images/product2.jpg';
-import img3 from '../images/product3.jpg';
 import Masonry from 'react-masonry-css';
 
 const Container = styled.div`
@@ -12,6 +9,8 @@ const Container = styled.div`
   align-items: center;
   justify-content: flex-start;
   width: 90%;
+  height: 85vh;
+  overflow-y: scroll;
   div {
     color: #eee;
     :hover {
@@ -20,13 +19,12 @@ const Container = styled.div`
     }
     h2 {
       text-align: center;
-      font-size: 2em;
+      font-size: 1.5em;
       font-family: 'bodoni-urw';
       font-style: italic;
       font-weight: 400;
     }
   }
-
   .masonryContainer {
     width: 100%;
   }
@@ -55,9 +53,6 @@ const Container = styled.div`
     }
   }
   @media all and (max-width: 1200px) {
-    display: grid;
-    grid-template-columns: 1fr;
-    grid-gap: 0px;
     .my-masonry-grid {
       margin-left: -15px; /* gutter size offset */
     }
@@ -79,7 +74,7 @@ const Container = styled.div`
     }
   }
 `;
-const Merch = () => {
+const Merch = ({ products, loading }) => {
   const breakpointColumnsObj = {
     default: 3,
     1100: 3,
@@ -93,33 +88,24 @@ const Merch = () => {
         className="my-masonry-grid"
         columnClassName="my-masonry-grid_column"
       >
-        <div>
-          <Products
-            name="Product 1"
-            url="http://www.google.com"
-            image={img1}
-            price="$10"
-          />
-          <h2>Product 1</h2>
-        </div>
-        <div>
-          <Products
-            name="Product 1"
-            url="http://www.google.com"
-            image={img2}
-            price="$10"
-          />
-          <h2>Product 2</h2>
-        </div>
-        <div>
-          <Products
-            name="Product 1"
-            url="http://www.google.com"
-            image={img3}
-            price="$10"
-          />
-          <h2>Product 3</h2>
-        </div>
+        {loading ? (
+          <h2>...Loading...</h2>
+        ) : (
+          products.map((product, key) => {
+            return (
+              <div>
+                <h2>{product.name}</h2>
+                <Products
+                  key={key}
+                  name={product.name}
+                  image={product.image}
+                  price={product.price}
+                  url={product.url}
+                />
+              </div>
+            );
+          })
+        )}
       </Masonry>
     </Container>
   );

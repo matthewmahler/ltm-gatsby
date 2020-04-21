@@ -6,6 +6,7 @@ const Container = styled.div`
   background: #34353766;
   box-shadow: 5px 5px 5px 0px #6780de88;
   border-radius: 20px;
+  width: 100%;
   :hover {
     transition: 0.2s;
     box-shadow: 10px 10px 10px 0px #c64274;
@@ -27,7 +28,7 @@ const Container = styled.div`
     color: #929da6;
     .info {
       position: absolute;
-      top: ${props => (props.height / 2) * -1 - 60}px;
+      top: ${(props) => (props.height / 2) * -1 - 60}px;
       color: #c64274;
 
       .name,
@@ -50,7 +51,7 @@ const Container = styled.div`
   @media only screen and (max-width: 420px) {
     div {
       .info {
-        top: ${props => (props.height / 2) * -1 - 30}px;
+        top: ${(props) => (props.height / 2) * -1 - 30}px;
 
         .name,
         .price {
@@ -76,7 +77,7 @@ const Products = ({ name, image, price, url }) => {
   const [height, setHeight] = useState(0);
   const [width, setWidth] = useState(0);
 
-  const measuredRef = useCallback(node => {
+  const measuredRef = useCallback((node) => {
     if (node !== null) {
       setHeight(node.getBoundingClientRect().height);
       setWidth(node.getBoundingClientRect().width);
@@ -85,7 +86,7 @@ const Products = ({ name, image, price, url }) => {
   return (
     <div>
       <Container
-        onClick={() => set(state => !state)}
+        onClick={() => set((state) => !state)}
         height={height}
         width={width}
       >
@@ -94,7 +95,7 @@ const Products = ({ name, image, price, url }) => {
           className="front"
           style={{
             opacity,
-            transform: transform.interpolate(t => `${t} rotateX(180deg)`),
+            transform: transform.interpolate((t) => `${t} rotateX(180deg)`),
           }}
         >
           <img alt={name} src={image} />
@@ -102,7 +103,7 @@ const Products = ({ name, image, price, url }) => {
         <animated.div
           className="back"
           style={{
-            opacity: opacity.interpolate(o => 1 - o),
+            opacity: opacity.interpolate((o) => 1 - o),
             transform,
             display,
           }}

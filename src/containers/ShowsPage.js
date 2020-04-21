@@ -39,7 +39,7 @@ const Container = styled.div`
     height: 50vh;
     overflow: scroll;
 
-    color: ${props => props.theme.white};
+    color: ${(props) => props.theme.white};
     font-family: 'bodoni-urw';
     font-weight: 500;
     font-size: 2rem;
@@ -134,11 +134,17 @@ const ShowsContainer = ({ theme }) => {
 `);
 
   let [width, height] = useWindowSize();
-
+  let filteredShows;
+  if (!loading && shows && !shows.error) {
+    filteredShows = shows.resultsPage.results.event.filter((show) => {
+      return moment() < moment(show.start.date);
+    });
+  }
+  console.log(filteredShows);
   return (
     <StaticQuery
       query={query}
-      render={data => {
+      render={(data) => {
         const portrait = data.contentfulShowsPage.portraitBackground.fluid;
         const landscape = data.contentfulShowsPage.landscapeBackground.fluid;
         return (
@@ -153,10 +159,10 @@ const ShowsContainer = ({ theme }) => {
               <div className="showlist">
                 {loading ? (
                   <h2>Loading</h2>
-                ) : shows.resultsPage.totalEntries < 1 ? (
+                ) : filteredShows < 1 ? (
                   <h2>More Shows TBA</h2>
                 ) : (
-                  shows.resultsPage.results.event.map((show, i) => {
+                  filteredShows.map((show, i) => {
                     return (
                       <div className="show">
                         <span> {moment(show.start.date).format('MMM D')}</span>

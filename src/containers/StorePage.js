@@ -1,9 +1,11 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import { StaticQuery, graphql } from 'gatsby';
 import BackgroundImage from 'gatsby-background-image';
 import { useWindowSize } from '../hooks/useWindowResize';
 import Merch from '../components/Merch';
+import cheerio from 'cheerio';
+import axios from 'axios';
 const Container = styled.div`
   display: flex;
   flex-direction: column;
@@ -43,11 +45,52 @@ const Container = styled.div`
 `;
 const StorePage = ({ theme }) => {
   let [width, height] = useWindowSize();
+  const [productsLoading, setProductsLoading] = useState(true);
+  const [products, setProducts] = useState([]);
+  useEffect(() => {
+    const baseURL = 'https://loyaltytome.bandcamp.com';
+    var cors = 'https://cors-anywhere.herokuapp.com/';
 
+    axios
+      .get(cors + 'https://loyaltytome.bandcamp.com/merch')
+      .then((response) => {
+        const $ = cheerio.load(response.data);
+
+        const urlElems = $('li.merch-grid-item');
+        // We now loop through all the elements found
+        for (let i = 0; i < urlElems.length; i++) {
+          let product = {
+            id: i,
+            name: null,
+            image: null,
+            price: null,
+            url: null,
+          };
+          const name = $(urlElems[i]).find('p.title');
+          const image = $(urlElems[i]).find('img');
+          const price = $(urlElems[i]).find('span.price');
+          const url = $(urlElems[i]).find('a');
+
+          if (name && image && price && url) {
+            product.name = $(name).text().trim();
+
+            product.image = $(image).attr('src');
+
+            product.price = $(price).text().trim();
+            product.url = baseURL + $(url).attr('href');
+          }
+          setProducts((oldArray) => [...oldArray, product]);
+
+          if (i === urlElems.length - 1) {
+            setProductsLoading(false);
+          }
+        }
+      });
+  }, []);
   return (
     <StaticQuery
       query={query}
-      render={data => {
+      render={(data) => {
         const portrait = data.contentfulStorePage.portraitBackground.fluid;
         const landscape = data.contentfulStorePage.landscapeBackground.fluid;
         return (
@@ -59,7 +102,12 @@ const StorePage = ({ theme }) => {
           >
             <Container>
               <h1>Store</h1>
-              <Merch />
+
+              <Merch
+                loading={productsLoading}
+                products={products}
+                theme={theme}
+              />
             </Container>
           </BackgroundImage>
         );
