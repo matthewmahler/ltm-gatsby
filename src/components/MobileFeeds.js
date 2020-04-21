@@ -6,6 +6,7 @@ const Container = styled.div`
   display: none;
 
   button {
+    color: #eee;
     cursor: pointer;
     font-size: 1rem;
     padding: 0.5rem;
@@ -33,9 +34,10 @@ const Container = styled.div`
       flex-direction: column;
       align-items: center;
       justify-content: flex-start;
-      height: 100%;
+      height: fit-content;
       width: 95%;
       overflow-y: scroll;
+      -webkit-overflow-scrolling: touch;
     }
   }
 `;

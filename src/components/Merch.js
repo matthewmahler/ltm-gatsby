@@ -93,10 +93,9 @@ const Merch = ({ products, loading }) => {
         ) : (
           products.map((product, key) => {
             return (
-              <div>
+              <div key={key}>
                 <h2>{product.name}</h2>
                 <Products
-                  key={key}
                   name={product.name}
                   image={product.image}
                   price={product.price}

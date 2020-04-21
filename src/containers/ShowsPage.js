@@ -140,7 +140,6 @@ const ShowsContainer = ({ theme }) => {
       return moment() < moment(show.start.date);
     });
   }
-  console.log(filteredShows);
   return (
     <StaticQuery
       query={query}

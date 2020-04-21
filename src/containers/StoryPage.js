@@ -138,16 +138,14 @@ const Container = styled.div`
 
 const Story = (props) => {
   let [width, height] = useWindowSize();
-  function shuffle(array) {
-    return array.sort(() => Math.random() - 0.5);
-  }
+
   return (
     <StaticQuery
       query={query}
       render={(data) => {
         const portrait = data.contentfulStoryPage.portraitBackground.fluid;
         const landscape = data.contentfulStoryPage.landscapeBackground.fluid;
-        const images = shuffle(data.contentfulStoryPage.profileImages);
+        const images = data.contentfulStoryPage.profileImages;
         return (
           <BackgroundImage
             Tag="section"
