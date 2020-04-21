@@ -10,9 +10,7 @@ const Container = styled.div`
     cursor: pointer;
     font-size: 1rem;
     padding: 0.5rem;
-    background: -webkit-linear-gradient(45deg, #6780de, #c64274);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+
     background-clip: text;
     border-width: 5px;
     border-style: solid;
@@ -27,17 +25,13 @@ const Container = styled.div`
     flex-direction: column;
     align-items: center;
     justify-content: flex-start;
-    height: 100%;
     width: 100%;
     .wrapper {
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: flex-start;
-      height: fit-content;
       width: 95%;
-      overflow-y: scroll;
-      -webkit-overflow-scrolling: touch;
     }
   }
 `;

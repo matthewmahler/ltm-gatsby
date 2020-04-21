@@ -50,7 +50,6 @@ const Layout = (props) => {
   return (
     <>
       <link rel="stylesheet" href="https://use.typekit.net/rgr1mqw.css" />
-
       <Container>
         <GlobalStyle />
         <Nav />
