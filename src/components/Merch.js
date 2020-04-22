@@ -17,15 +17,16 @@ const Container = styled.div`
     grid-template-columns: 1fr 1fr 1fr;
     grid-gap: 1rem;
     color: #eee;
-    :hover {
-      transition: 0.2s;
-      color: #c64274;
-    }
+
     div {
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: space-between;
+      :hover {
+        transition: 0.2s;
+        color: #c64274;
+      }
       h2 {
         text-align: center;
         font-size: 1.5em;
