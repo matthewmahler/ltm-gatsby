@@ -1,7 +1,6 @@
 import React, { useState, useCallback } from 'react';
 import { useSpring, animated } from 'react-spring';
 import styled from 'styled-components';
-
 const Container = styled.div`
   background: #34353766;
   box-shadow: 5px 5px 5px 0px #6780de88;

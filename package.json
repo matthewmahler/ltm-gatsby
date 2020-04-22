@@ -37,6 +37,7 @@
     "moment": "^2.24.0",
     "path": "^0.12.7",
     "react": "^16.13.1",
+    "react-content-loader": "^5.0.4",
     "react-dom": "^16.13.1",
     "react-google-maps": "^9.4.5",
     "react-helmet": "^6.0.0",

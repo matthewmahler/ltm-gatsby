@@ -104,6 +104,8 @@ const StorePage = ({ theme }) => {
               <h1>Store</h1>
 
               <Merch
+                width={width}
+                height={height}
                 loading={productsLoading}
                 products={products}
                 theme={theme}
