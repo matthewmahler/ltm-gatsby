@@ -49,13 +49,6 @@ const Container = styled.div`
       padding: 0;
       margin: 1rem;
       width: 100%;
-      .insta-container {
-        .profileImageContainer {
-          .overlay {
-            display: none;
-          }
-        }
-      }
     }
   }
 `;

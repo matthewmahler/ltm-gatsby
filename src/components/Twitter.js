@@ -6,7 +6,11 @@ const Container = styled.div`
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
-  width: 90%;
+  width: 100%;
+  #twitterContainer {
+    width: 100%;
+    overflow-y: scroll;
+  }
 `;
 const TwitterContainer = () => {
   useEffect(() => {
@@ -21,7 +25,11 @@ const TwitterContainer = () => {
       );
     }
   }, []);
-  return <Container id="twitterContainer"></Container>;
+  return (
+    <Container>
+      <div id="twitterContainer" />
+    </Container>
+  );
 };
 
 export default TwitterContainer;
