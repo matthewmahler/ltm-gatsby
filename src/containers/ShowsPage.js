@@ -47,7 +47,7 @@ const Container = styled.div`
     .showlist {
       width: 80vw;
       height: 50vh;
-      overflow: scroll;
+      overflow-y: scroll;
 
       color: ${(props) => props.theme.white};
       font-family: 'bodoni-urw';
@@ -111,7 +111,7 @@ const Container = styled.div`
     .wrapper {
       .showlist {
         width: 95%;
-        height: 90vh;
+        height: 75vh;
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -121,7 +121,6 @@ const Container = styled.div`
         .show {
           box-sizing: border-box;
           width: 100%;
-          height: auto;
           display: flex;
           flex-direction: column;
           align-items: center;
