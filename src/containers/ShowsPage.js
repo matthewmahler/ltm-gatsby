@@ -35,6 +35,7 @@ const Container = styled.div`
       10px 18px 23px #79468c11; */
   }
   .wrapper {
+    width: 65vw;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -151,7 +152,7 @@ const ShowsContainer = ({ theme }) => {
   let filteredShows;
   if (!loading && shows && !shows.error) {
     filteredShows = shows.resultsPage.results.event.filter((show) => {
-      return moment() < moment(show.start.date);
+      return moment() > moment(show.start.date);
     });
   }
   const transitions = useTransition(loading, null, {
