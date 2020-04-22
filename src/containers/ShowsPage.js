@@ -152,7 +152,7 @@ const ShowsContainer = ({ theme }) => {
   let filteredShows;
   if (!loading && shows && !shows.error) {
     filteredShows = shows.resultsPage.results.event.filter((show) => {
-      return moment() > moment(show.start.date);
+      return moment() < moment(show.start.date);
     });
   }
   const transitions = useTransition(loading, null, {
