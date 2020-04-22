@@ -13,7 +13,6 @@ const Container = styled.div`
   align-items: center;
   justify-content: flex-start;
   height: 85vh;
-  overflow-y: scroll;
   width: 100vw;
   background-image: linear-gradient(to bottom, #040404, #04040499, #040404);
   background-size: cover;

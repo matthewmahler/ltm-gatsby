@@ -10,11 +10,9 @@ const Container = styled.div`
     cursor: pointer;
     font-size: 1rem;
     padding: 0.5rem;
-
-    background-clip: text;
-    border-width: 5px;
-    border-style: solid;
-    border-image: linear-gradient(to right, #6780de, #c64274) 100 0% / 1px;
+    background: transparent;
+    border: 2px solid #eee;
+    border-radius: 5px;
     :hover {
       filter: brightness(1.5);
     }
@@ -27,11 +25,14 @@ const Container = styled.div`
     justify-content: flex-start;
     width: 100%;
     .wrapper {
+      z-index: 1000;
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: flex-start;
       width: 95%;
+      height: 70vh;
+      overflow-y: scroll;
     }
   }
 `;
