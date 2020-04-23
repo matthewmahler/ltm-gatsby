@@ -3,7 +3,7 @@ import Nav from '../components/Nav';
 import styled, { createGlobalStyle } from 'styled-components';
 import SocialContainer from './SocialContainer';
 import SEO from '../components/SEO';
-import img from '../images/icon.jpg';
+import img from '../images/Final2.png';
 
 const GlobalStyle = createGlobalStyle`
 html{
