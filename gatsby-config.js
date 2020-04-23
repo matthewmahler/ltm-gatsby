@@ -9,7 +9,11 @@ const { spaceId, accessToken } = process.env;
 
 module.exports = {
   siteMetadata: {
-    title: 'Feeny || Between The Bookends',
+    title: 'Loyalty To Me',
+    description:
+      "Self-proclaimed 'Radio Emo Band' Loyalty To Me released their first single, Radio Off, in December 2018. Just one month later, the Central Jersey rockers solidified a permanent five-piece lineup",
+    author: 'Matt Mahler',
+    siteUrl: 'https://loyaltytome.com/',
   },
   plugins: [
     'gatsby-plugin-react-helmet',
@@ -19,8 +23,8 @@ module.exports = {
         name: `Loyalty To Me`,
         short_name: `LTM`,
         start_url: `/`,
-        background_color: `#8A9CA2`,
-        theme_color: `#427ACA`,
+        background_color: `#c64274`,
+        theme_color: `#6780de`,
         // Enables "Add to Homescreen" prompt and disables browser UI (including back button)
         // see https://developers.google.com/web/fundamentals/web-app-manifest/#display
         display: `standalone`,

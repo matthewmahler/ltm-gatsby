@@ -2,6 +2,8 @@ import React from 'react';
 import Nav from '../components/Nav';
 import styled, { createGlobalStyle } from 'styled-components';
 import SocialContainer from './SocialContainer';
+import SEO from '../components/SEO';
+import img from '../images/icon.jpg';
 
 const GlobalStyle = createGlobalStyle`
 html{
@@ -49,6 +51,7 @@ const theme = {
 const Layout = (props) => {
   return (
     <>
+      <SEO image={{ src: img, width: 400, height: 400 }} />
       <link rel="stylesheet" href="https://use.typekit.net/rgr1mqw.css" />
       <Container>
         <GlobalStyle />

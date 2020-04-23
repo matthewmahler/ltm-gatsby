@@ -1,8 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import img from '../images/testBackground.png';
 import { useSpring, animated } from 'react-spring';
-
 import { StaticQuery, graphql } from 'gatsby';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSpotify, faYoutube } from '@fortawesome/free-brands-svg-icons';
@@ -75,7 +73,7 @@ const Landing = ({ theme }) => {
   return (
     <StaticQuery
       query={query}
-      render={data => {
+      render={(data) => {
         const portrait = data.contentfulLandingPage.portraitBackground.fluid;
         const landscape = data.contentfulLandingPage.landscapeBackground.fluid;
         return (
@@ -85,7 +83,7 @@ const Landing = ({ theme }) => {
             backgroundColor={theme.pink}
             fadeIn={true}
           >
-            <Container theme={theme} bg={img}>
+            <Container theme={theme}>
               <animated.img
                 src={data.contentfulLandingPage.logo.file.url}
                 style={fade}
