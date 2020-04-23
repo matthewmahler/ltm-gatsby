@@ -40,6 +40,7 @@ const Container = styled.div`
 
   @media only screen and (max-width: 420px) {
     .merchGrid {
+      height: auto;
       grid-template-columns: 1fr 1fr;
       div {
         h2 {
