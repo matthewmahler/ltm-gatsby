@@ -11,12 +11,13 @@ const Container = styled.div`
   justify-content: flex-start;
   width: 90%;
   height: 85vh;
-  overflow-y: scroll;
   .merchGrid {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     grid-gap: 1rem;
     color: #eee;
+    overflow-y: scroll;
+    height: 60vh;
 
     div {
       display: flex;
