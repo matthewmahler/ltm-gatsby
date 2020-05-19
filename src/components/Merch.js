@@ -17,7 +17,7 @@ const Container = styled.div`
     grid-gap: 1rem;
     color: #eee;
     overflow-y: scroll;
-    height: 60vh;
+    max-height: 70vh;
 
     div {
       display: flex;
